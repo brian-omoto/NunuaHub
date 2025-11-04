@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile - NunuaHub</title>
+    <style>
+        body { font-family: Arial; max-width: 400px; margin: 50px auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Welcome to Your Profile!</h2>
+    <p>Hello, {{ user.username }}! 🎉</p>
+    <p>You have successfully registered and logged in.</p>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
