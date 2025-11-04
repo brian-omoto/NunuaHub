@@ -1,7 +1,5 @@
 # NunuaHub - Django E-commerce Project
 
-# NunuaHub - Django E-commerce Project
-
 ## Team Members & Responsibilities
 | Reg No. | Name | Role | App Assignment |
 |---------|------|------|----------------|
