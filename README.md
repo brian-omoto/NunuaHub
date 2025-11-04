@@ -1,27 +1,28 @@
 # NunuaHub - Django E-commerce Project
 
-## Team Members
-1. 192885 - Omoto Brian - Lead
-2. ⁠192197 - Dollan James
-3. ⁠145322 - Matu Chantal
-4. 188741 - Joe Mapelu
-5. ⁠189728 - Boniface Mwangi
-6. ⁠191866 - Abraham Kwikiriza
+# NunuaHub - Django E-commerce Project
 
-## Project Apps (To Be Developed)
-1. **accounts** - User authentication & profiles
-2. **store** - Products & categories  
-3. **cart** - Shopping cart functionality
-4. **orders** - Order management
+## Team Members & Responsibilities
+| Reg No. | Name | Role | App Assignment |
+|---------|------|------|----------------|
+| 192885 | Omoto Brian | Project Lead | accounts |
+| 192197 | Dollan James | Developer | store |
+| 145322 | Matu Chantal | Developer | cart |
+| 188741 | Joe Mapelu | Developer | orders |
+| 189728 | Boniface Mwangi | Tester | testing & reviews |
+| 191866 | Abraham Kwikiriza | Documentation | docs & README |
 
 ## Development Workflow
-1. Each member works on their own branch
-2. Create Pull Request when feature is ready
-3. Project lead reviews and merges
+1. Project Lead sets up foundation (accounts app)
+2. Each developer creates their assigned app in separate branches
+3. Tester reviews each Pull Request
+4. Documentation maintains project docs
+5. Project Lead merges approved PRs
 
-## Getting Started
-1. Clone repository
-2. Create virtual environment: `python -m venv venv`
-3. Activate: `venv\Scripts\activate` 
-4. Install dependencies: `pip install -r requirements.txt`
-5. Run: `python manage.py runserver`
+## Apps to Develop
+1. accounts - User authentication (Omoto Brian)
+2. store - Products & categories (Dollan James)
+3. cart - Shopping cart (Matu Chantal)
+4. orders - Order management (Joe Mapelu)
+
+
