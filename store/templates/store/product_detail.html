@@ -1,0 +1,35 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<h2>{{ product.name }}</h2>
+
+<div style="display: flex; gap: 20px;">
+    <div style="flex: 1;">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 300px;">
+        {% endif %}
+    </div>
+    <div style="flex: 2;">
+        <p class="price" style="font-size: 24px;">Ksh {{ product.price }}</p>
+        <p><strong>Category:</strong> {{ product.category.name }}</p>
+        <p><strong>Availability:</strong> 
+            {% if product.available and product.stock_quantity > 0 %}
+            In Stock ({{ product.stock_quantity }} available)
+            {% else %}
+            Out of Stock
+            {% endif %}
+        </p>
+        <p><strong>Description:</strong></p>
+        <p>{{ product.description }}</p>
+        
+        {% if product.available and product.stock_quantity > 0 %}
+        <button style="background: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+            Add to Cart
+        </button>
+        {% endif %}
+        
+        <br><br>
+        <a href="{% url 'product_list' %}">← Back to Products</a>
+    </div>
+</div>
+{% endblock %}

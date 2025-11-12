@@ -1,0 +1,21 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<h2>Products in {{ category.name }}</h2>
+<p>{{ category.description }}</p>
+
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-card">
+        <h3>{{ product.name }}</h3>
+        <p class="price">Ksh {{ product.price }}</p>
+        <p>{{ product.description|truncatewords:15 }}</p>
+        <a href="{% url 'product_detail' product.id %}">View Details</a>
+    </div>
+    {% empty %}
+    <p>No products found in this category.</p>
+    {% endfor %}
+</div>
+
+<a href="{% url 'store_home' %}">← Back to Home</a>
+{% endblock %}

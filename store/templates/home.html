@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<h2>Welcome to NunuaHub Store</h2>
+<p>Your one-stop shop for all your needs!</p>
+
+<h3>Featured Products</h3>
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-card">
+        <h4>{{ product.name }}</h4>
+        <p class="price">Ksh {{ product.price }}</p>
+        <p>{{ product.description|truncatewords:20 }}</p>
+        <a href="{% url 'product_detail' product.id %}">View Details</a>
+    </div>
+    {% empty %}
+    <p>No products available yet.</p>
+    {% endfor %}
+</div>
+
+<h3>Categories</h3>
+<ul>
+    {% for category in categories %}
+    <li><a href="{% url 'category_products' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
