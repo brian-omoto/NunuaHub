@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart - NunuaHub</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .cart-item { border: 1px solid #ddd; padding: 15px; margin: 10px 0; }
+        .total { font-size: 20px; font-weight: bold; color: green; }
+        .empty-cart { text-align: center; padding: 40px; }
+    </style>
+</head>
+<body>
+    <h1>🛒 Your Shopping Cart</h1>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    
+    {% if cart.items.all %}
+        {% for item in cart.items.all %}
+        <div class="cart-item">
+            <h3>{{ item.product.name }}</h3>
+            <p>Price: Ksh {{ item.product.price }}</p>
+            
+            <form method="post" action="{% url 'update_cart_item' item.id %}">
+                {% csrf_token %}
+                Quantity: 
+                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" style="width: 60px;">
+                <button type="submit">Update</button>
+            </form>
+            
+            <p>Item Total: Ksh <strong>{{ item.get_total_price }}</strong></p>
+            <a href="{% url 'remove_from_cart' item.id %}" style="color: red;">Remove</a>
+        </div>
+        {% endfor %}
+        
+        <div class="total">
+            Cart Total: Ksh {{ cart.get_total_price }}
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="{% url 'product_list' %}">← Continue Shopping</a>
+            | 
+            <a href="#" style="background: green; color: white; padding: 10px; text-decoration: none;">
+                Checkout (Coming Soon)
+            </a>
+        </div>
+    {% else %}
+        <div class="empty-cart">
+            <h2>Your cart is empty 😔</h2>
+            <p>Add some products to get started!</p>
+            <a href="{% url 'product_list' %}">Browse Products</a>
+        </div>
+    {% endif %}
+</body>
+</html>

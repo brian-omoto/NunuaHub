@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connection Test</title>
+</head>
+<body>
+    <h1>Store-Cart Connection Test</h1>
+    <h2>Products in Database:</h2>
+    <ul>
+    {% for product in products %}
+        <li>{{ product.name }} - Ksh {{ product.price }}</li>
+    {% empty %}
+        <li>No products found!</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
