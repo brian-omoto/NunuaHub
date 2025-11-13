@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include  # Fixed: 'urls' not 'url'
+from django.urls import path, include  
 from django.http import HttpResponse
 
 # Add a simple home view
@@ -10,6 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('store/', include('store.urls')),  
+    path('orders/', include('orders.urls')),
     path('', home_view, name='home'),
     path('cart/', include('cart.urls', namespace='cart')),
 
