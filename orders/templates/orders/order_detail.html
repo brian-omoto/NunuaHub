@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order #{{ order.order_number }} - NunuaHub</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .header { background: #2c3e50; color: white; padding: 1rem; margin-bottom: 20px; border-radius: 5px; }
+        nav a { color: white; margin-right: 15px; text-decoration: none; }
+        .order-info { background: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .order-items { width: 100%; border-collapse: collapse; background: white; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .order-items th { background: #34495e; color: white; padding: 12px; text-align: left; }
+        .order-items td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        .order-items tr:hover { background: #f8f9fa; }
+        .content { background: white; padding: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>NunuaHub Store</h1>
+        <nav>
+            <a href="/store/">Home</a>
+            <a href="/store/products/">Products</a>
+            <a href="/orders/">My Orders</a>
+            <a href="/admin/">Admin</a>
+        </nav>
+    </div>
+
+    <div class="content">
+        <h2>Order #{{ order.order_number }}</h2>
+        
+        <div class="order-info">
+            <p><strong>Order Date:</strong> {{ order.created_at|date:"M d, Y H:i" }}</p>
+            <p><strong>Status:</strong> {{ order.get_status_display }}</p>
+            <p><strong>Total Amount:</strong> Ksh {{ order.total_amount }}</p>
+            <p><strong>Shipping Address:</strong> {{ order.shipping_address }}</p>
+            <p><strong>Billing Address:</strong> {{ order.billing_address }}</p>
+        </div>
+
+        <h3>Order Items</h3>
+        <table class="order-items">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>Ksh {{ item.price }}</td>
+                    <td>Ksh {{ item.total_price }}</td>
+                </tr>
+                {% endfor %}
+                <tr style="background: #f8f9fa; font-weight: bold;">
+                    <td colspan="3" style="text-align: right;">Grand Total:</td>
+                    <td>Ksh {{ order.total_amount }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'orders:order_list' %}" style="background: #95a5a6; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px;">← Back to Orders</a>
+            <a href="/store/products/">Continue Shopping</a>
+        </div>
+    </div>
+</body>
+</html>

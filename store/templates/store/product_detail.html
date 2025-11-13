@@ -1,0 +1,33 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<h2>{{ product.name }}</h2>
+
+<div style="display: flex; gap: 20px;">
+    <div style="flex: 1;">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 300px;">
+        {% endif %}
+    </div>
+    <div style="flex: 2;">
+        <p class="price" style="font-size: 24px;">Ksh {{ product.price }}</p>
+        <p><strong>Category:</strong> {{ product.category.name }}</p>
+        <p><strong>Availability:</strong> 
+            {% if product.available and product.stock_quantity > 0 %}
+            In Stock ({{ product.stock_quantity }} available)
+            {% else %}
+            Out of Stock
+            {% endif %}
+        </p>
+        <p><strong>Description:</strong></p>
+        <p>{{ product.description }}</p>
+        
+        {% if product.available and product.stock_quantity > 0 and user.is_authenticated %}
+        <a href="{% url 'cart:add_to_cart' product.id %}" style="background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Add to Cart</a>
+        {% endif %}
+        
+        <br><br>
+        <a href="{% url 'product_list' %}">← Back to Products</a>
+    </div>
+</div>
+{% endblock %}
