@@ -5,8 +5,8 @@
 |---------|------|------|----------------|
 | 192885 | Omoto Brian | Project Lead | accounts |
 | 192197 | Dollan James | Developer | store |
-| 145322 | Joe Mapelu | Developer | cart |
-| 188741 | Matu Chantal | Developer | orders |
+|  188741| Joe Mapelu | Developer | cart |
+| 145322 | Matu Chantal | Developer | orders |
 | 189728 | Boniface Mwangi | Tester | testing & reviews |
 | 191866 | Abraham Kwikiriza | Documentation | docs & README |
 
