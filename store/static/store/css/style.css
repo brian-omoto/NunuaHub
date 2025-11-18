@@ -1,0 +1,15 @@
+/* Consistent product image styling */
+.product-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* hover effect */
+.product-image:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
