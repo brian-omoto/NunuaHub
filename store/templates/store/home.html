@@ -12,6 +12,7 @@
         <p class="price">Ksh {{ product.price }}</p>
         <p>{{ product.description|truncatewords:20 }}</p>
         <a href="{% url 'product_detail' product.id %}">View Details</a>
+        <img src="{{ product.image.url }}" alt="Product named {{ product.name }} displayed in the store smkdir -p store/static/store/cssetting, showing packaging and branding details if visible. The product is presented for sale, with price and category information nearby.">
         {% if user.is_authenticated %}
         <a href="{% url 'cart:add_to_cart' product.id %}" style="background: #3498db; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; display: inline-block; margin-top: 10px;">Add to Cart</a>
         {% endif %}

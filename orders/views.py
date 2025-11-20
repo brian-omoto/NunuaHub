@@ -18,7 +18,7 @@ def order_detail(request, order_number):
 def create_test_order(request):
     """Create a test order manually for development"""
     # Get some products to add to the order
-    products = Product.objects.all()[:2]  # Get first 2 available products
+    products = Product.objects.all()  # Get first 2 available products
     
     if not products:
         messages.error(request, "No products available. Please add products first.")
